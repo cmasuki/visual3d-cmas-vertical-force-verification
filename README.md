@@ -18,7 +18,7 @@ This is a quick, visual comparison but there is scope to output the force data f
 3. Open the report template (although the pipeline script will open this anyway, if the filepath is specified)
 
 ### Requirements
-Visual 3d (C-motion). Any version should work but we are currently running version 6.
+Visual 3d ([C-motion](https://www.c-motion.com/)). Any version should work but we are currently running version 6.
 
 ### Other Notes
 Our system will sometimes crash if we take an acquisition without any 3d data when it is expecting it so the subject will usually be holding a reflective marker in view of the cameras during the acquisition. (This is quicker and easier than going into the settings to deselect 3d data capture).
