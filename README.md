@@ -13,7 +13,7 @@ This is a quick, visual comparison but there is scope to output the force data f
 
 ### Instructions
 
-1. Load the .c3d file to the visual 3d workspace  (Example data file in the repository:     )
+1. Load the .c3d file to the visual 3d workspace  (Example data file in the repository)
 2. Load and run the pipeline script
 3. Open the report template (although the pipeline script will open this anyway, if the filepath is specified)
 
