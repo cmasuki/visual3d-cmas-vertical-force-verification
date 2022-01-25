@@ -1,4 +1,7 @@
 Prompt_For_Pipeline_Parameter_Value
+!
+! Asks user to input their known mass in Kg
+!
 /PIPELINE_PARAMETER_NAME=MASS
 /PROMPT=Enter Subject mass in Kg
 /DATA_TYPE=STRING
@@ -6,6 +9,9 @@ Prompt_For_Pipeline_Parameter_Value
 ;
 
 Evaluate_Expression
+!
+! Saves input as a metric named "SUBJECT MASS" 
+!
 /EXPRESSION=::MASS
 /RESULT_NAME=SUBJECT MASS
 /RESULT_TYPE=METRIC
@@ -13,6 +19,10 @@ Evaluate_Expression
 ;
 
 Divide_Signal_By_Constant
+!
+! Converts force plate signals in Newtons
+! to their equivalent mass in Kg
+!
 /SIGNAL_TYPES=FORCE
 ! /SIGNAL_FOLDER=ORIGINAL
 ! /SIGNAL_NAMES=
@@ -25,18 +35,31 @@ Divide_Signal_By_Constant
 ;
 
 Metric_From_C3D_Parameter
+!
+! Reads date of data acquisition from
+! c3d to include on report
+!
 /METRIC_NAME=DATE
 /PARAMETER_GROUP=TRIAL
 /PARAMETER_NAME=DATE
 ;
 
 Metric_From_C3D_Parameter
+!
+! Reads time of data acquisition from 
+! c3d to include on report
+!
 /METRIC_NAME=TIME
 /PARAMETER_GROUP=TRIAL
 /PARAMETER_NAME=TIME
 ;
 
 Subtract_Signals
+!
+! Subtracting any signal from itself creates a 'ZERO' 
+! signal so we can later add metric values to 
+! this signal to represent constants on graphs
+!
 /SIGNAL_TYPES=DERIVED+DERIVED
 /SIGNAL_FOLDER=PROCESSED+PROCESSED
 /SIGNAL_NAMES=FP1+FP1
@@ -46,6 +69,11 @@ Subtract_Signals
 ;
 
 Add_Signals
+!
+! We add the 'SUBJECT MASS' metric to the 'ZERO'
+! signal so that the subject's mass can be represented
+! by a constant signal on the vertical force graph
+! 
 /SIGNAL_TYPES=DERIVED+METRIC
 /SIGNAL_FOLDER=PROCESSED+PROCESSED
 /SIGNAL_NAMES=ZERO+SUBJECT MASS
@@ -55,13 +83,23 @@ Add_Signals
 ;
 
 Open_Report_Template
+!
+! Change this filepath to where you saved the report 
+! template (.rgt) file to allow it to open automatically. 
+! If the filepath call fails it will give you the option 
+! to select the filepath manually.
+!
  /REPORT_TEMPLATE=C:\My Captures\QA_Daily Forceplate spotcheck\QA_Daily Fz reports\Report_QA_Daily FP spotcheck.rgt
 ;
 
 Switch_to_Report_Mode
+!
+! Selects the 'Reports' tab of the workspace to show the report
+!
 ! /SHOW_ANIMATION=FALSE
 ! /PAGE_NUMBER=
 ;
+
 
 
 
