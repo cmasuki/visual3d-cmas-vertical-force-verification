@@ -58,7 +58,7 @@ Subtract_Signals
 !
 ! Subtracting any signal from itself creates a 'ZERO' 
 ! signal so we can later add metric values to 
-! this signal to represent constants on graphs
+! this signal to represent constants as lines on graphs
 !
 /SIGNAL_TYPES=DERIVED+DERIVED
 /SIGNAL_FOLDER=PROCESSED+PROCESSED
